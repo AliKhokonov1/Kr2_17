@@ -3,9 +3,9 @@
 #include"FractionPoint.h"
 #include"FractionVector.h"
 using namespace std;
-FractionVector::FractionVector(){
+FractionVector::FractionVector(int M){
 	SetZero();
-	N=3;
+	N=M;
 	e=new FractionPoint[N];	
 }
 FractionVector::~FractionVector() {
@@ -56,7 +56,7 @@ int FractionVector::nod(int a, int b){
         return nod(abs(a),abs(b)-abs(a));
     
 }
-FractionPoint FractionVector::scala(FractionVector &q){
+FractionPoint FractionVector::operator*(FractionVector &q){
 	FractionPoint s(0,1);
 	FractionPoint w(0,1);
 	for(int i = 0; i < N; i++){
@@ -68,14 +68,14 @@ FractionPoint FractionVector::scala(FractionVector &q){
     return w;
 }
 FractionVector FractionVector::operator+(FractionVector &q){
-	FractionVector p;
+	FractionVector p(N);
 	for(int i = 0; i < N; i++){
 		p.getVector()[i]=q.getVector()[i]+e[i];
 	}
 	return p;
 }
 FractionVector FractionVector::operator-(FractionVector &q){
-	FractionVector p;
+	FractionVector p(N);
 	for(int i = 0; i < N; i++){
 		p.getVector()[i]=q.getVector()[i]-e[i];
 	}

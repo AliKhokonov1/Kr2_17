@@ -1,10 +1,7 @@
-#include <fstream>
-#include <iostream>
-using namespace std;
 class FractionPoint;
 class FractionVector {
 public:
-    FractionVector();
+    FractionVector(int M);
     ~FractionVector();
     FractionVector(const FractionVector&b);
     void Clean();
@@ -14,7 +11,7 @@ public:
     void setVector(ifstream &fin);
     void printVector();
     int nod (int a, int b);
-    FractionPoint scala(FractionVector &q);
+    FractionPoint operator*(FractionVector &q);
     FractionVector operator+(FractionVector &q);
     FractionVector operator-(FractionVector &q);
     FractionVector operator=(const FractionVector &b);
